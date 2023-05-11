@@ -1,4 +1,5 @@
 .container{
     border-radius: 2rem;
     border: rgb(204, 204, 241);
+    background-image: url('Bag.jpg');
 }

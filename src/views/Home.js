@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <div>
         <div>
-            <h1> Welcome to What's That!</h1>
+            <h1> Welcome Purple Crochet!</h1>
 
 
             <div className="container" style={{width: 20 + 'rem'}}>

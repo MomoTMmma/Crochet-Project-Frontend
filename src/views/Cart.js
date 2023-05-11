@@ -29,6 +29,8 @@ const Cart = () => {
         
     }
 
+    
+
     const increaseQuantity = id => {
         // create a copy
         let copyCart = {...cart};
