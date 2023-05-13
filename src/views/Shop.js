@@ -30,7 +30,7 @@ import { ref, set } from "firebase/database";
 
     const {cart, setCart} = useContext(DataContext);
 
-    const addProduct = (product) => {
+    const addProduct = async(product) => {
         let copyCart = {...cart}
 
         copyCart.size ++;
@@ -73,6 +73,12 @@ import { ref, set } from "firebase/database";
                 }) :
                 <h3> Finding products. . .</h3>
             }
+
+            <div>
+                <h2>
+                    More products coming soon along with pictures.
+                </h2>
+            </div>
 
                 
             </div>

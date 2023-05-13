@@ -8,13 +8,13 @@ import { useDatabase, useUser } from "reactfire";
 import { set, ref } from "firebase/database";
 
 const Cart = () => {
-    /*
+    {/*
     1. access to  our cart and setCart --- context
     2. clear the entire cart
     3. remove all of a certain item
     4. increment  ( + )
     5. decrement    ( - )
-    */
+    */}
 
     const db = useDatabase();
     const { data:user } = useUser();
@@ -29,16 +29,48 @@ const Cart = () => {
         
     }
 
-    
+    const addProduct = (product) => {
+        let copyCart = { ...cart };
+        const productId = product.id;  {/* Use product.id as the key */}
+        
+        copyCart.size++;
+        copyCart.total += product.price;
+        
+        if (copyCart.products[productId]) {
+          copyCart.products[productId].quantity++;
+        } else {
+          copyCart.products[productId] = { data: product, quantity: 1 };
+        }
+      
+        console.log(copyCart);
+      
+        if (user) {
+          set(ref(db, `carts/${user.uid}/products/${productId}`), {
+            data: product,
+            quantity: copyCart.products[productId].quantity,
+          });
+        }
+      
+        setCart(copyCart);
+      };
+
+      {Object.values(cart.products).map((product, index) => {
+        return (
+          <ListGroup.Item key={product.id}> // or any unique value
+            {/* element content */}
+          </ListGroup.Item>
+        );
+      })}
+      
 
     const increaseQuantity = id => {
-        // create a copy
+        {/* create a copy */}
         let copyCart = {...cart};
-        // modify the copy
+        {/* modify the copy */}
         copyCart.size++;
         copyCart.total += copyCart.products[id].data.price;
         copyCart.products[id].quantity++;
-        //set the state
+        {/* set the state*/}
         if (user){
             set(ref(db, 'carts/' + user.uid), copyCart);
         }
@@ -70,7 +102,7 @@ const Cart = () => {
 
     return (
 
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' }} className='mx-auto mt-8'>
             <Card.Body>
                 <Card.Title>Your Cart:</Card.Title>
             </Card.Body>
@@ -79,11 +111,11 @@ const Cart = () => {
                 console.log(product);
                 return <ListGroup.Item key={index}>
                     <Card.Img variant="top" src={product.data.img_url} id="p-img"/>
-                    <h3>{product.data.name}</h3>
-                    <h5>{product.data.make} {product.data.model}</h5>
+                    <h3>{product.data.Title}</h3>
+                    <h5>{product.data.description} {product.data.category}</h5>
                     <h6>Price: {product.data.price}</h6>
                     <Button variant="secondary" id="dec-btn" onClick={() => {decreaseQuantity(product.data.id)}}><b> - 1 </b></Button>
-                    <span id="q-span">{product.quantity}</span>
+                    <p id="q-span"className="mx-auto w-min">{product.quantity}</p>
                     <Button variant="success" id="inc-btn" onClick={() => {increaseQuantity(product.data.id)}}><b> + 1 </b></Button>
                     <br></br>
                     <Button variant="warning" id="r-item" onClick={() => {removeItem(product.data.id)}}>remove this item</Button>

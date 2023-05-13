@@ -27,17 +27,25 @@ const FIREBASE_DB_URL = process.env.REACT_APP_FIREBASE_DB_URL;
 //   databaseURL: FIREBASE_DB_URL,
 // };
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCyYgE2b9LT_AZ1apVqJyoWBcLjEb2RrUo",
+//   authDomain: "commerce-feee7.firebaseapp.com",
+//   databaseURL: "https://commerce-feee7-default-rtdb.firebaseio.com",
+//   projectId: "commerce-feee7",
+//   storageBucket: "commerce-feee7.appspot.com",
+//   messagingSenderId: "1096573613374",
+//   appId: "1:1096573613374:web:92bf829b32da5a4cae286f"
+// };
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCyYgE2b9LT_AZ1apVqJyoWBcLjEb2RrUo",
-  authDomain: "commerce-feee7.firebaseapp.com",
-  databaseURL: "https://commerce-feee7-default-rtdb.firebaseio.com",
-  projectId: "commerce-feee7",
-  storageBucket: "commerce-feee7.appspot.com",
-  messagingSenderId: "1096573613374",
-  appId: "1:1096573613374:web:92bf829b32da5a4cae286f"
+  apiKey: "AIzaSyAiuSuEsfqPcO2gQt-LElvTvDd9w4mrMSo",
+  authDomain: "crochet-project-c4c98.firebaseapp.com",
+  projectId: "crochet-project-c4c98",
+  storageBucket: "crochet-project-c4c98.appspot.com",
+  messagingSenderId: "636807654385",
+  appId: "1:636807654385:web:2afc8faea5e5b1fca6b250",
+  measurementId: "G-F0ZPLHV5CV"
 };
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

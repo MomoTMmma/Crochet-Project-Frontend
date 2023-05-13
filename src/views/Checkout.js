@@ -15,7 +15,7 @@ const Checkout = () => {
     const{data:user} = useUser();
 
     useEffect(() => {
-        // create payment intent as soon as this component FIRST renders 
+        // create payment intent as soon as this component FIRST renders
         // with an API call to flask
         console.log(user);
         fetch("https://clutch-flask.onrender.com/pay/create-payment-intent", {
